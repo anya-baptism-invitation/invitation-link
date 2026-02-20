@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holy Baptism | Einra Anya G. Aga</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#fdeff2;
+    overflow-x:hidden;
+    scroll-behavior:smooth;
+}
+
+/* ================= SCROLL PROGRESS BAR ================= */
+#scrollBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 6px;
+    background: linear-gradient(to right, #f8c8dc, #d63384);
+    width: 0%;
+    z-index: 10001;
+    border-radius: 0 3px 3px 0;
+}
+
+/* ================= CONTINUOUS HEADER SPARKLES ================= */
+.sparkle {
+    position: absolute;
+    bottom: -20px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    animation: floatUp linear infinite;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.8; }
+    100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+}
+
+/* ================= PARTICLE BURST (FLOWERS/HEARTS) ================= */
+.particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10002;
+    font-size: 20px;
+}
+
+/* ================= SCROLL DOWN NOTIFY ================= */
+.scroll-down-notify {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    z-index: 5;
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+    40% {transform: translateY(-10px) translateX(-50%);}
+}
+
+/* ================= COUNTDOWN ================= */
+.countdown{
+    margin-top:20px;
+    font-size:14px;
+    letter-spacing:1px;
+    background:rgba(255,255,255,0.2);
+    padding:8px 18px;
+    border-radius:20px;
+    display:inline-block;
+    backdrop-filter:blur(6px);
+}
+
+/* ================= FLIP CARD INTRO ================= */
+.intro-wrapper{
+    position:fixed;width:100%;height:100vh;
+    display:flex;justify-content:center;align-items:center;
+    background:linear-gradient(to bottom,#f8c8dc,#fdeff2);
+    z-index:9999;perspective:1500px;transition:1.5s ease;
+}
+
+.invite-card{
+    width:350px;height:450px;position:relative;
+    transform-style:preserve-3d;transition:1.5s;
+    cursor:pointer;animation:floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+    0%,100%{margin-top:0;}
+    50%{margin-top:-10px;}
+}
+
+.invite-card.flip{transform:rotateY(180deg);}
+
+.card-face{
+    position:absolute;width:100%;height:100%;
+    backface-visibility:hidden;border-radius:20px;
+    box-shadow:0 30px 60px rgba(0,0,0,0.3);
+    display:flex;justify-content:center;align-items:center;
+    flex-direction:column;padding:30px;text-align:center;
+}
+
+.card-front{
+    background:linear-gradient(rgba(255,255,255,0.75),rgba(255,255,255,0.75)),
+    url('in.jpg') center/cover no-repeat;
+    color:#b76e79;border:8px solid rgba(255,255,255,0.6);
+}
+
+.card-back{
+    background:linear-gradient(rgba(244,166,193,0.8),rgba(244,166,193,0.8)),
+    url('out.jpg') center/cover no-repeat;
+    color:white;transform:rotateY(180deg);
+    border:8px solid rgba(255,255,255,0.5);
+}
+
+.open-text{margin-top:20px;font-size:14px;opacity:0.7;}
+.intro-wrapper.hide{opacity:0;visibility:hidden;transition:1s;}
+
+/* ================= HERO ================= */
+header{
+    height:100vh;
+    background:linear-gradient(rgba(255,182,193,0.5),rgba(255,182,193,0.5)),
+    url('einra.jpg') center/cover no-repeat;
+    display:flex;justify-content:center;align-items:center;
+    text-align:center;position:relative;overflow:hidden;
+}
+
+.header-content{
+    color:white;animation:fadeIn 2s ease forwards;
+    opacity:0;z-index:1;
+}
+
+@keyframes fadeIn{to{opacity:1;}}
+
+.header-content h1{
+    font-family:'Playfair Display',serif;
+    font-size:3.5rem;
+}
+
+/* ================= SECTIONS ================= */
+
+.event-section{
+    background:linear-gradient(rgba(255,255,255,0.4),rgba(255,255,255,0.4)),
+    url('event.jpg') center/cover no-repeat;
+    padding:100px 20px;text-align:center;
+}
+
+.godparents-section{
+    position:relative;
+    background:linear-gradient(rgba(255,255,255,0.35),rgba(255,255,255,0.35)),
+    url('baptism.jpg') center/cover no-repeat;
+    padding:100px 20px;text-align:center;
+    overflow:hidden;
+}
+
+.reception-section {
+    padding:100px 20px;text-align:center;
+    position: relative;
+    background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+                url('reception.jpg') center/cover no-repeat;
+}
+
+/* BLACK DIVIDER */
+.divider{
+    width:80px;height:4px;background:#000000;
+    margin:20px auto 40px;border-radius:10px;
+}
+
+.card{
+    background:rgba(255,240,245,0.85);
+    backdrop-filter:blur(10px);
+    padding:60px;margin:40px auto;
+    max-width:1000px;border-radius:30px;
+    box-shadow:0 25px 50px rgba(0,0,0,0.15);
+    opacity:0;transform:translateY(60px);
+    transition:1s ease;
+}
+
+.card.show{
+    opacity:1;transform:translateY(0);
+}
+
+/* SPECIAL SPONSOR SECTION STYLE */
+.special-sponsors {
+    margin-bottom: 50px;
+    border-bottom: 2px dashed rgba(183, 110, 121, 0.3);
+    padding-bottom: 30px;
+}
+
+.photo-box img {
+    max-width: 250px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.godparent-grid{
+    display:flex;justify-content:center;
+    align-items:flex-start;gap:60px;
+    flex-wrap:wrap;
+}
+
+.godparent-column h4{
+    font-family:'Playfair Display',serif;
+    font-size:1.6rem;
+    margin-bottom:20px;
+    color:#b76e79;
+}
+
+.godparent-column ul{list-style:none;padding:0;}
+
+.godparent-column li{
+    padding:12px 0;
+    border-bottom:1px solid rgba(0,0,0,0.05);
+    transition:0.4s ease;
+    cursor: pointer;
+    position: relative;
+    opacity: 0; 
+    transform: translateX(-30px);
+    color: #333;
+}
+
+.godparent-column li.reveal {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* GODPARENT HOVER EFFECT */
+.godparent-column li:hover{
+    color:#d63384; 
+    font-weight: 500;
+    transform: scale(1.1) translateX(10px);
+}
+
+footer{
+    background:#f8c8dc;padding:40px;
+    color:white;text-align:center;
+}
+
+@media(max-width:768px){
+    .header-content h1{font-size:2rem;}
+    .card {padding: 30px;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="scrollBar"></div>
+
+<div class="intro-wrapper" id="intro">
+    <div class="invite-card" id="card" onclick="flipCard(event)">
+        <div class="card-face card-front">
+            <h1>You're Invited 💖</h1>
+            <p class="open-text">Tap to Open</p>
+        </div>
+        <div class="card-face card-back">
+            <h2>Holy Baptism</h2>
+            <p>Einra Anya G. Aga</p>
+            <p class="open-text">Opening Invitation...</p>
+        </div>
+    </div>
+</div>
+
+<header id="hero">
+    <div class="header-content">
+        <h1>Holy Baptism</h1>
+        <h2>Celebrating the Baptism of</h2>
+        <h1>Einra Anya G. Aga</h1>
+        <div class="countdown" id="countdown">Loading countdown...</div>
+    </div>
+    <div class="scroll-down-notify">
+        <p>Scroll Down</p>
+        <span>▼</span>
+    </div>
+</header>
+
+<section class="event-section">
+    <h3>📅 Event Details</h3>
+    <div class="divider"></div>
+    <div class="card">
+        <p><strong>Date:</strong> March 07, 2026</p>
+        <p><strong>Time:</strong> 10:00 AM</p>
+        <p><strong>Church:</strong> Señor Salvador Parish located in Brgy. Salapungan</p>
+    </div>
+</section>
+
+<section class="godparents-section" id="godparents">
+    <h3>💐 Godparents</h3>
+    <div class="divider"></div>
+    <div class="card">
+        
+        <div class="special-sponsors">
+            <div class="godparent-column">
+                <h4>✨ Main Sponsors</h4>
+                <ul>
+                    <li>Ninang Mary Grace Java</li>
+                    <li>Ninong Reymond Garcia</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="godparent-grid">
+            <div class="godparent-column">
+                <h4>🌸 Ninangs</h4>
+                <ul>
+                    <li>Ninang Abegail Valdez</li>
+                    <li>Ninang Helen David</li>
+                    <li>Ninang Ma. Thalia Tisado</li>
+                    <li>Ninang Charito Dela Paz</li>
+                </ul>
+            </div>
+            <div class="godparent-column">
+                <h4>🌿 Ninongs</h4>
+                <ul>
+                    <li>Ninong Arthur Ignacio</li>
+                    <li>Ninong Dennis Cunanan</li>
+                    <li>Ninong Jeffrey Sangco</li>
+                    <li>Ninong John Paul Sebastian</li>
+                    <li>Ninong Marcial Castor</li>
+                    <li>Ninong Resty Alonzo</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reception-section">
+    <h3>🎉 Reception Venue</h3>
+    <div class="divider"></div>
+    <div class="card">
+        <div class="photo-box">
+            <img src="pablos.jpg" alt="Reception Logo">
+        </div>
+        <p><strong>Venue:</strong> Pablo's Restaurant – San Vicente, San Miguel, Bulacan</p>
+        <p style="margin-top: 10px;"><strong>After Baptism:</strong> 11:30 AM onwards</p>
+    </div>
+</section>
+
+<footer>
+    With love and joy, we invite you to celebrate this special day with us.
+</footer>
+
+<script>
+/* --- 1. HERO SPARKLES --- */
+const hero = document.getElementById("hero");
+const icons = ['❤️', '🫧', '✨', '🌸', '🤍'];
+for(let i=0; i<35; i++){
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("sparkle");
+    sparkle.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+    sparkle.style.left = Math.random() * 100 + "%";
+    sparkle.style.fontSize = (12 + Math.random() * 15) + "px";
+    sparkle.style.animationDuration = (5 + Math.random() * 5) + "s";
+    sparkle.style.animationDelay = Math.random() * 5 + "s";
+    hero.appendChild(sparkle);
+}
+
+/* --- 2. FLOWER & HEART PARTICLE ENGINE --- */
+function createFlowerBurst(x, y) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const flowerTypes = ['🌸', '🌺', '🌹', '🌷', '❤️', '✨'];
+    p.innerHTML = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
+    document.body.appendChild(p);
+    
+    const destX = (Math.random() - 0.5) * 300;
+    const destY = (Math.random() - 0.5) * 300;
+    
+    p.style.left = x + 'px';
+    p.style.top = y + 'px';
+    
+    const anim = p.animate([
+        { transform: 'translate(0, 0) scale(0.5) rotate(0deg)', opacity: 1 },
+        { transform: `translate(${destX}px, ${destY}px) scale(1.2) rotate(${Math.random()*360}deg)`, opacity: 0 }
+    ], { duration: 1200, easing: 'ease-out' });
+    
+    anim.onfinish = () => p.remove();
+}
+
+/* --- 3. FLIP INTRO LOGIC --- */
+function flipCard(e){
+    document.getElementById("card").classList.add("flip");
+    const rect = e.currentTarget.getBoundingClientRect();
+    for(let i=0; i<30; i++) {
+        createFlowerBurst(rect.left + rect.width/2, rect.top + rect.height/2);
+    }
+    setTimeout(()=>{
+        document.getElementById("intro").classList.add("hide");
+    },1500);
+}
+
+/* --- 4. SCROLL & REVEAL LOGIC --- */
+const cards = document.querySelectorAll('.card');
+const godparentNames = document.querySelectorAll('.godparent-column li');
+const scrollBar = document.getElementById("scrollBar");
+
+window.addEventListener('scroll',()=>{
+    const winScroll = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    scrollBar.style.width = (winScroll / height) * 100 + "%";
+
+    cards.forEach(card=>{
+        if(card.getBoundingClientRect().top < window.innerHeight - 100){
+            card.classList.add('show');
+        }
+    });
+
+    godparentNames.forEach((name, index) => {
+        if (name.getBoundingClientRect().top < window.innerHeight - 50) {
+            setTimeout(() => { name.classList.add('reveal'); }, index * 80); 
+        }
+    });
+});
+
+/* --- 5. GODPARENT "BLOOMING" HOVER EFFECT --- */
+godparentNames.forEach(item => {
+    item.addEventListener('mousemove', (e) => {
+        if(Math.random() > 0.85) { 
+            createFlowerBurst(e.clientX, e.clientY);
+        }
+    });
+    
+    item.addEventListener('mouseenter', (e) => {
+        for(let i=0; i<6; i++) {
+            createFlowerBurst(e.clientX, e.clientY);
+        }
+    });
+});
+
+/* --- 6. COUNTDOWN --- */
+const eventDate = new Date("2026-03-07T10:00:00+08:00").getTime();
+const countdownEl = document.getElementById("countdown");
+
+setInterval(()=>{
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+    if(distance < 0){
+        countdownEl.innerHTML = "Today is the Blessed Day! 💖";
+        return;
+    }
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    countdownEl.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+}, 1000);
+</script>
+
+</body>
+</html>
